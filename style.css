@@ -13,7 +13,6 @@ body{
     position: absolute;
     left: 80px;
 }
-
 .sky{
     background-image: url('fb-game-background.png');
     width: 500px;
@@ -26,9 +25,7 @@ body{
     font-size: 25px;
     color: red;
     z-index: +5;
-    display: none;
-    
-    
+    display: none;   
 }
 .ground{
     background-image: url('bottom-background.png');
@@ -50,7 +47,6 @@ body{
     height: 790px;
     z-index: 2;
     background-color: white;
-
 }
 .border-top {
     width: 660px;

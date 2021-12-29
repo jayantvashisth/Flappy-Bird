@@ -1,5 +1,3 @@
-console.log("hello world")
-
 const bird = document.querySelector('.bird');
 const gameDisplay = document.querySelector('.game-container');
 const ground = document.querySelector('.ground-moving');
@@ -18,27 +16,13 @@ function jump() {
     }
     bird.style.bottom = birdBottom + 'px';
     console.log(birdBottom);
-
-
-
 }
+
+document.addEventListener('keyup', control);
 function control(e) {
     if (e.keyCode === 38) {
         jump()
     }
-}
-document.addEventListener('keyup', control);
-function gameOver() {
-    clearInterval(gameTimerId);
-    isGameOver = true;
-    document.removeEventListener('keyup', control);
-    console.log('game over mf');
-    ground.classList.add('ground');
-    ground.classList.remove('ground-moving');
-    game_over.style.display = "block";
-
-
-
 }
 
 function generateObsactle() {
@@ -48,7 +32,6 @@ function generateObsactle() {
 
     let obstacleLeft = 400;
     let randomHeight = Math.random() * 60;
-
     let obstacleBottom = randomHeight;
 
     if (!isGameOver) {
@@ -65,7 +48,7 @@ function generateObsactle() {
     obstacle.style.bottom = obstacleBottom + 'px';
     topObsacle.style.bottom = obstacleBottom + gap + 'px';
 
-   
+
 
     function movingObstacle() {
         obstacleLeft -= 2;
@@ -83,33 +66,33 @@ function generateObsactle() {
         ) {
             gameOver();
             clearInterval(timerId);
-            console.log('here is the error');
         }
 
     }
-    
-    
 
-    
     let timerId = setInterval(movingObstacle, 20);
     if (!isGameOver) setTimeout(generateObsactle, 3000);
 
 }
 generateObsactle();
 
+function gameOver() {
+    clearInterval(gameTimerId);
+    isGameOver = true;
+    document.removeEventListener('keyup', control);
+    console.log('game over mf');
+    ground.classList.add('ground');
+    ground.classList.remove('ground-moving');
+    game_over.style.display = "block";
 
+}
 
 function startGame() {
     birdBottom = birdBottom - gravity;
     bird.style.bottom = birdBottom + 'px';
     bird.style.left = birdLeft + 'px';
 
-
-
 }
 let gameTimerId = setInterval(startGame, 20);
-
-// clearInterval(timerId)
-
 
 startGame();
